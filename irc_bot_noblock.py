@@ -168,7 +168,7 @@ class irc_bot(object):
 
 	def send_message(self, message):
 		if message == self.last_message:
-			message = message + chr(10)
+			message = message + " "
 		try:
 			self.sock.send(bytes("PRIVMSG #%s :%s\r\n" % (self.CHAT_CHANNEL, message), "UTF-8"))
 			self.last_message = message
