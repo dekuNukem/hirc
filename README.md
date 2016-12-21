@@ -1,4 +1,4 @@
-A very simple command line IRC client for Twitch chat.
+A very simple command line IRC client for Twitch chat with logging.
 
 ## Usage
 
