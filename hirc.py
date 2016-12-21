@@ -35,7 +35,7 @@ last_message = ''
 chat_channel = sys.argv[1].lower().lstrip().rstrip()
 chat_server = ['irc.chat.twitch.tv', 6667]
 
-bot = irc_bot_noblock.irc_bot(nickname, oauth, chat_channel, chat_server[0], chat_server[1], timeout=300, tags=1)
+bot = irc_bot_noblock.irc_bot(nickname, oauth, chat_channel, chat_server[0], chat_server[1], timeout=300)
 bot.connect()
 
 t = threading.Thread(target=worker)
