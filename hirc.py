@@ -19,7 +19,7 @@ def worker():
     global last_message
     while 1:
         last_message = input()
-        time.sleep(0.1)
+        time.sleep(0.01)
 
 def log_msg(name, msg):
     msg = msg.replace('\r', '').replace('\n', '')
