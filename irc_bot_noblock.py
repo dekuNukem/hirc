@@ -126,7 +126,7 @@ class irc_bot(object):
 		raw_msg_list = self.recv_buffer.split("\r\n")
 		self.recv_buffer = raw_msg_list[-1]
 		for item in raw_msg_list[:-1]:
-			if "tmi.twitch.tv RECONNECT" in item:
+			if "PRIVMSG" not in item and "tmi.twitch.tv RECONNECT" in item:
 				err_msg = self.NICK + ": server requested RECONNECT"
 				print(err_msg)
 				log_error(err_msg)
