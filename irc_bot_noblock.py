@@ -135,7 +135,7 @@ class irc_bot(object):
 			if "PRIVMSG" not in item and 'tmi.twitch.tv' in item and 'PING' in item:
 				self.sock.send(bytes("PONG tmi.twitch.tv\r\n", "UTF-8"))
 			if "PRIVMSG" not in item and "tmi.twitch.tv" in item and ("Login unsuccessful" in item or "Error logging in" in item):
-				print(self.NICK + ": Login failed! check your username and oauth", file=sys.stderr)
+				print(self.NICK + ": Login failed! check your username and oauth")
 				retry_connect()
 				break
 			ret.insert(0, item)
@@ -147,7 +147,7 @@ class irc_bot(object):
 			try:
 				self.connect()
 			except Exception as e:
-				print("Exception while trying to connect: " + str(type(e)) + ": " + str(e), file=sys.stderr)
+				print("Exception while trying to connect: " + str(type(e)) + ": " + str(e))
 				time.sleep(1)
 				continue
 			return
@@ -173,5 +173,5 @@ class irc_bot(object):
 			self.sock.send(bytes("PRIVMSG #%s :%s\r\n" % (self.CHAT_CHANNEL, message), "UTF-8"))
 			self.last_message = message
 		except Exception as e:
-			print("Exception sending message: " + str(type(e)) + ": " + str(e), file=sys.stderr)
+			print("Exception sending message: " + str(type(e)) + ": " + str(e))
 			self.retry_connect()
