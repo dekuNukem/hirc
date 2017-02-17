@@ -21,6 +21,12 @@ def worker():
         last_message = input()
         time.sleep(0.01)
 
+def safe_print(item):
+	try:
+		print(item)
+	except Exception:
+		print(item.encode('utf-8'))
+
 def log_msg(name, msg):
     msg = msg.replace('\r', '').replace('\n', '')
     with open('./comment_log/' + chat_channel + ".txt", mode='a', encoding='utf-8') as log_file:
@@ -47,10 +53,10 @@ while 1:
     for item in [x for x in tmi_list if "." not in x.username]:
         message_orig = item.message.replace(chr(1) + "ACTION", "/me").replace(chr(1), '').lstrip().rstrip()
         log_msg(item.username, message_orig)
-        print(item.username + ": " + message_orig)
+        safe_print(item.username + ": " + message_orig)
 
     if last_message != '':
-        print(">> " + nickname + ": " + last_message)
+        safe_print(">> " + nickname + ": " + last_message)
         bot.send_message(last_message)
         log_msg(nickname, last_message)
         last_message = ''
