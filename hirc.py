@@ -50,7 +50,7 @@ while 1:
         print(item.username + ": " + message_orig)
 
     if last_message != '':
-        print("\n\t>> " + nickname + ": " + last_message)
+        print(">> " + nickname + ": " + last_message)
         bot.send_message(last_message)
         log_msg(nickname, last_message)
         last_message = ''
